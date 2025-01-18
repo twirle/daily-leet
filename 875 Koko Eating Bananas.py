@@ -25,7 +25,7 @@ class Solution(object):
     def minEatingSpeed(self, piles, h):
         left = 1
         right = max(piles)
-        total = right
+        speed = right
 
         # use binary search to find the nice eating speed, k
         while left <= right:
@@ -35,8 +35,8 @@ class Solution(object):
             hours = 0
             for pile in piles:
                 hours += math.ceil(float(pile) / k)
-            
-            print(hours, h, k, left, right, total)
+
+            print(hours, h, k, left, right, speed)
 
             if hours <= h:
                 # find smaller k
@@ -47,12 +47,12 @@ class Solution(object):
                 # find bigger k
                 left = k + 1
 
-        return total
+        return speed
 
     def __init__(self):
         # piles = [30, 11, 23, 4, 20]
         # h = 6
-        piles = [3,6,7,11]
+        piles = [3, 6, 7, 11]
         h = 8
         result = self.minEatingSpeed(piles, h)
         print(result)
