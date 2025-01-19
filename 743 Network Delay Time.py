@@ -34,10 +34,10 @@ class Solution(object):
                 continue
 
             visit.add(node)
-            time = max(t, nodeTravelTime)
+            time = max(time, nodeTravelTime)
 
             for neighbour, neighWeight in graph[node]:
-                newWeight = time + neighWeight
+                newWeight = nodeTravelTime + neighWeight
                 if neighbour not in visit:
                     heapq.heappush(minHeap, (newWeight, neighbour))
 
