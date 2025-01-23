@@ -32,10 +32,17 @@ class MinStack(object):
     def __init__(self):
         self.stack = []
         self.minStack = []
+        # minStack will function as a secondary stack with same number of items as in stack, but stores the mininum value of the main stack at that level in the stack
+
+        # -2 -3
+        # -3 -3
+        #  0 -2
+        # -2 -2
 
     def push(self, val):
         self.stack.append(val)
 
+        # check if minstack
         val = min(val, self.minStack[-1] if self.minStack else val)
         self.minStack.append(val)
 
