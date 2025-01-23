@@ -44,22 +44,25 @@ class Twitter(object):
 
     def getNewsFeed(self, userId):
         # 10 most recent
-        # maxHeap
+        # minHeap[count, tweetId, followeeId, index]
         result = []
         minHeap = []
 
         self.followMap[userId].add(userId)
 
+        # retrieve all tweets of followees in the followMap of the user
         for followeeId in self.followMap[userId]:
             index = len(self.tweetMap[followeeId]) - 1
             count, tweetId = self.tweetMap[followeeId][index]
             minHeap.append([count, tweetId, followeeId, index - 1])
         heapq.heapify(minHeap)
 
+        # pop 10 tweets from the heap and push to result
         while minHeap and len(result) < 10:
             count, tweetId, followeeId, index = heapq.heappop(minHeap)
             result.append(tweetId)
 
+            # check if there's any tweets left from that followee
             if index >= 0:
                 count, tweetId = self.tweetMap[followeeId][index]
                 heapq.heappush(
