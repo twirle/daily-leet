@@ -38,3 +38,10 @@ class Solution:
                 return True
             hash.add(n)
         return False
+
+
+# set uniques to compare length
+class Solution:
+    def containsDuplicate(self, nums):
+        # sets are unordered unique so if there's a dupe the length would not be the same
+        return len(set(nums)) == len(nums)
