@@ -42,7 +42,7 @@ class Solution(object):
         result = self.sortColors(nums)
         print(result)
 
-        # I could check the number of 0s, 1s, 2s, then do one pass through the nums and update them
+        # I could do one pass to check the number of 0s, 1s, 2s, then do another pass through the nums and update them
 
         # 2 0 2 1 1 0
         # 2 1 1
