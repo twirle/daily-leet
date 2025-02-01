@@ -22,19 +22,38 @@
 # Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
 
 class Solution(object):
+    def twoSumBinary(self, numbers, target):
+        for i in range(len(numbers)):
+            left = i + 1
+            right = len(numbers) - 1
+            diff = target - numbers[i]
+
+            while left <= right:
+                mid = (left + right) // 2
+                # print(numbers[left], numbers[right], numbers[mid])
+
+                if numbers[mid] == diff:
+                    return [i + 1, mid + 1]
+                elif numbers[mid] < diff:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return []
+
     def twoSum(self, numbers, target):
         left = 0
         right = len(numbers) - 1
 
         while left < right:
-            cursorSum = numbers[left] + numbers[right]
+            twoSum = numbers[left] + numbers[right]
 
-            if cursorSum > target:
-                right -= 1
-            elif cursorSum < target:
+            if twoSum == target:
+                return [left + 1, right + 1]
+            elif twoSum < target:
                 left += 1
-            else:
-                return [left+1, right + 1]
+            elif twoSum > target:
+                right -= 1
+                
         return []
 
     def __init__(self) -> None:
