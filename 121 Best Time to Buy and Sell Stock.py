@@ -15,17 +15,25 @@
 
 class Solution:
     def maxProfit(self, prices):
-        # setting the pointers
-        left, right = 0, 1
+        left = 0
+        right = 1
         maxProfit = 0
 
         while right < len(prices):
-            # check profitable
             if prices[right] > prices[left]:
-                profit = prices[right]-prices[left]
-                maxProfit = max(maxProfit, profit)
+                diff = prices[right] - prices[left]
+                maxProfit = max(maxProfit, diff)
+
             else:
-                # if right is less then left, take right as new lowest price
                 left = right
             right += 1
+
         return maxProfit
+
+    def __init__(self):
+        prices = [7, 1, 5, 3, 6, 4]
+        result = self.maxProfit(prices)
+        print(result)
+
+
+solution = Solution()
