@@ -15,6 +15,7 @@
 
 class Solution(object):
     def containsNearbyDuplicate(self, nums, k):
+        # stores last seen index of characters
         hashmap = {}
 
         for i in range(len(nums)):
