@@ -43,13 +43,13 @@ class Solution(object):
 
     def diameterOfBinaryTreeIterative(self, root):
         stack = [root]
-        visited = {}
+        visited = {None: (0, 0)}
 
         while stack:
             node = stack[-1]
 
             # postorder of left > right > root
-            if node.left and node.right not in visited:
+            if node.left and node.left not in visited:
                 stack.append(node.left)
             elif node.right and node.right not in visited:
                 stack.append(node.right)
@@ -60,7 +60,7 @@ class Solution(object):
                 rightHeight, rightDiameter = visited[node.right]
 
                 # diameter: max(left + right height, left / right diameter)
-                visited[node] = (1 + max(leftHeight, rightDiameter), max(
-                    leftHeight + rightHeight, leftDiameter, rightDiameter))
+                visited[node] = (1 + max(leftHeight, rightHeight),
+                                 max(leftHeight + rightHeight, leftDiameter, rightDiameter))
 
         return visited[root][1]
