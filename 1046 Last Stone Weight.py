@@ -29,6 +29,7 @@ class Solution(object):
     def lastStoneWeight(self, stones):
         # turn into maxHeap by negating
         stones = [-stone for stone in stones]
+        print(stones)
         heapq.heapify(stones)
 
         while len(stones) > 1:
