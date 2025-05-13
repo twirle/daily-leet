@@ -45,6 +45,7 @@ class Solution(object):
             else:
                 result = 0
 
+            # check largest at current node
             largest = max(largest, node.val)
 
             # recurse down and increment their counter back up

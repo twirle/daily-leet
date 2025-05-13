@@ -29,7 +29,7 @@ class Solution(object):
             distance = (x ** 2) + (y ** 2)
             minHeap.append([distance, x, y])
 
-        heapq.heapify(minHeap)
+        # heapq.heapify(minHeap)
 
         result = []
         while k > 0:
